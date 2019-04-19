@@ -3,5 +3,7 @@
 @import '~ag-grid-community/dist/styles/ag-theme-balham.css';
 
 .App {
- height : 100px;
+ /* height : 100px; */
+ min-height: 100vh;
+
 }

@@ -7,8 +7,8 @@ import { RowData } from '../../Models/RowData';
 interface IProps  {};
 interface IState  {
   Name: string,
-  columnDefs: ColumnDef[],
-  rowData: RowData[]
+  columnDefs: any[],
+  rowData: any[]
 };
 
 class CarDetails extends Component<IProps, IState>{
@@ -22,7 +22,8 @@ class CarDetails extends Component<IProps, IState>{
           }, {
             headerName: "Model", field: "model"
           }, {
-            headerName: "Price", field: "price"
+            headerName: "Price", field: "price",singleClickEdit : true
+            
           }],
           rowData: [{
             make: "Toyota", model: "Celica", price: 35000

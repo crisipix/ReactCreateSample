@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
-import {
-  Route,
-  NavLink,
-  BrowserRouter,
-  Switch
-} from "react-router-dom";
+import {  BrowserRouter,RouteComponentProps} from "react-router-dom";
 
 
 import './App.css';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu } from 'antd';
 
 import AppHeader from './Components/Layout/AppHeader';
 import AppSidebar from './Components/Layout/AppSidebar';
 import AppContent from './Components/Layout/AppContent';
 
 
-type IProps = {};
-type IState = {};
+interface IProps  {
+};
+interface IState  {};
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
 
 class App extends Component<IProps, IState> {
   constructor(props: any) {

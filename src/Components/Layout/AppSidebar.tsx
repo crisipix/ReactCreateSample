@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./AppSidebar";
+import "./AppSidebar.css";
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 interface IProps { }
@@ -16,7 +16,7 @@ class AppSidebar extends Component<IProps, IState>{
     }
     render() {
         return (
-            <div>
+            <div className="sidebar" >
                 <Sider width={200} style={{ background: '#fff' }}>
                     <Menu
                         mode="inline"

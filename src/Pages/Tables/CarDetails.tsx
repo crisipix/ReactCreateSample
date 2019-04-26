@@ -3,26 +3,36 @@ import { AgGridReact } from 'ag-grid-react';
 import './CarDetails.css';
 import { ColumnDef } from '../../Models/ColumnDef';
 import { RowData } from '../../Models/RowData';
+import {
+  NavLink, Route, RouteComponentProps
+} from "react-router-dom";
 
-interface IProps  {};
+interface IProps  {
+};
 interface IState  {
-  Name: string,
+  name: string,
+  selectedModel : string,
   columnDefs: any[],
   rowData: any[]
 };
 
-class CarDetails extends Component<IProps, IState>{
+class CarDetails extends Component<IProps& RouteComponentProps<{}>, IState>{
 
     constructor(props: any) {
         super(props);
+        
         this.state = {
-          Name: "Chris",
+          name: "Chris",
+          selectedModel:"",
           columnDefs: [{
             headerName: "Make", field: "make"
           }, {
             headerName: "Model", field: "model"
           }, {
-            headerName: "Price", field: "price",singleClickEdit : true
+            headerName: "Price",
+            field: "price",
+            editable: true,
+            singleClickEdit : true
             
           }],
           rowData: [{
@@ -35,7 +45,26 @@ class CarDetails extends Component<IProps, IState>{
         };
         //this.setState({Name: "Chris"});
       }
+      componentDidMount() {
+        console.log("mounted");
+          console.log("props",this.props);
+          console.log("match",this.props.match);
+          console.log("match",this.props.match.params);
+          const { params } : any = this.props.match;
+          const model : string = params.model;
+          if(model){
+            this.setState( state => ({selectedModel: model.toLowerCase(),
+              rowData: state.rowData.filter(r => r.model && r.model.toLowerCase() === model.toLowerCase())
+            }));
+          }
+          
+         // this.props.history.push('/details/celica');
 
+      }
+    
+      componentWillUnmount() {
+    
+      }
     render(){
         return (
             <div

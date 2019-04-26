@@ -4,6 +4,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import {
     NavLink, Route, RouteComponentProps
   } from "react-router-dom";
+
 interface IProps { 
 }
 interface IState { 
@@ -13,11 +14,18 @@ interface IState {
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-
+//Type '{}' is missing the following properties from type 
+//'Readonly<IProps & RouteComponentProps<{}, StaticContext, any>>': history, location, match
+// I gave it RouteComponentProps only
+//https://stackoverflow.com/questions/50331285/reactjs-and-typescript-error-ts2322-type-is-not-assignable-to-type-intrinsicat?rq=1
+// & RouteComponentProps<{}>
 class AppHeader extends Component<IProps, IState>{
     constructor(props: any) {
         super(props);
-        
+        console.log(this.props);
+        // const {match} = this.props;
+        // console.log("match",match);
+
         this.state = {
             selectedKeys : ["home"]
         };
@@ -26,7 +34,7 @@ class AppHeader extends Component<IProps, IState>{
     onNavClick(event: any){
         // this.props.routes[this.props.routes.length-1]
         console.log("props", this.props);
-        console.log("match", this.context);
+        // console.log("match", this.props.match);
         console.log("nav clicked", this.state.selectedKeys);
         console.log(event);
         this.setState({selectedKeys : [event.key]});

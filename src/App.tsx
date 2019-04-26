@@ -14,7 +14,7 @@ interface IProps  {
 };
 interface IState  {};
 
-
+//Type '{}' is missing the following properties from type 'Readonly<IProps & RouteComponentProps<{}, StaticContext, any>>': history, location, matchts(2739)
 class App extends Component<IProps, IState> {
   constructor(props: any) {
     super(props);
@@ -27,7 +27,7 @@ class App extends Component<IProps, IState> {
       <div className="App">
       <BrowserRouter>
         <Layout>
-          <AppHeader/>
+          <AppHeader />
           <Layout>
             <AppSidebar/>
             <Layout style={{ padding: '0 10px 10px' }}>

@@ -1,13 +1,17 @@
 import React, {  Component } from "react";
 import Button from 'antd/lib/button';
 import './UserForm.css';
+import {
+  NavLink, Route, RouteComponentProps
+} from "react-router-dom";
+interface IProps{
 
-interface IProps{}
+}
 interface IState{
   Name: string
 }
 
-class UserForm extends Component<IProps, IState>{
+class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
     constructor(props: any){
         super(props);
         this.state = {
@@ -28,6 +32,16 @@ class UserForm extends Component<IProps, IState>{
         // event.preventDefault();
       }
 
+      componentDidMount() {
+        console.log("mounted");
+          console.log("props",this.props);
+          console.log("match",this.props.match);
+          console.log("match",this.props.match.params);
+          const {params} = this.props.match;
+          
+          }
+          
+       
     render(){
         return(
         <div className="userform">

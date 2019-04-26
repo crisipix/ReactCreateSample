@@ -32,8 +32,9 @@ class AppContent extends Component<IProps, IState> {
             <Switch>
               <Route exact path='/' component={Home}/>
               {/* both /roster and /roster/:number begin with /roster */}
-              <Route path='/details' component={CarDetails} />
-              <Route path='/form' component={UserForm} />
+              <Route exact path='/details' component={CarDetails} />
+              <Route exact path='/details/:model' component={CarDetails} />
+              <Route exact path='/form' component={UserForm} />
             </Switch>
             
         </Content>

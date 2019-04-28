@@ -40,7 +40,7 @@ class CarDetails extends Component<IProps& RouteComponentProps<{}>, IState>{
 
     constructor(props: any) {
         super(props);
-        
+        // console.log(AllCars);
         this.state = {
           name: "Chris",
           selectedModel:"",
@@ -115,7 +115,7 @@ class CarDetails extends Component<IProps& RouteComponentProps<{}>, IState>{
               active={modifiers.active}
               disabled={modifiers.disabled}
               //label={car.model.toString()}
-              key={`${car.make}${car.model}`}
+              key={`${car.id}${car.make}${car.model}`}
               onClick={handleClick}
               text={this.highlightText(text, query)}
           />
@@ -129,7 +129,7 @@ class CarDetails extends Component<IProps& RouteComponentProps<{}>, IState>{
         if (exactMatch) {
             return normalizedTitle === normalizedQuery;
         } else {
-            return `${car.id}. ${normalizedTitle} ${car.model}`.indexOf(normalizedQuery) >= 0;
+            return `${car.make} ${car.model}`.indexOf(normalizedQuery) >= 0;
         }
     };
      

@@ -129,7 +129,8 @@ class CarDetails extends Component<IProps& RouteComponentProps<{}>, IState>{
         if (exactMatch) {
             return normalizedTitle === normalizedQuery;
         } else {
-            return `${car.make} ${car.model}`.indexOf(normalizedQuery) >= 0;
+            return (`${car.make.toLowerCase()}`.indexOf(normalizedQuery) !== -1 ||
+            `${car.model.toLowerCase()}`.indexOf(normalizedQuery) !== -1 );
         }
     };
      

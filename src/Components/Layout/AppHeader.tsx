@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "./AppHeader";
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import {
-    NavLink, Route, RouteComponentProps
+    NavLink, Route, RouteComponentProps, withRouter, BrowserRouterProps
   } from "react-router-dom";
 
-interface IProps { 
+interface IProps{ 
 }
 interface IState { 
     selectedKeys: any[]
@@ -19,28 +19,35 @@ const { Header, Content, Sider } = Layout;
 // I gave it RouteComponentProps only
 //https://stackoverflow.com/questions/50331285/reactjs-and-typescript-error-ts2322-type-is-not-assignable-to-type-intrinsicat?rq=1
 // & RouteComponentProps<{}>
-class AppHeader extends Component<IProps, IState>{
+class AppHeader extends Component<IProps & RouteComponentProps, IState>{
     constructor(props: any) {
         super(props);
         console.log(this.props);
+        
+
         // const {match} = this.props;
         // console.log("match",match);
+        console.log("header match", this.props.match);
+        const {location} = this.props;
+        const path = location.pathname.split('/')[1] ? location.pathname.split('/')[1] :"home";
+        console.log("header path",path);
 
         this.state = {
-            selectedKeys : ["home"]
+            selectedKeys : [path]
         };
     }
 
     onNavClick(event: any){
         // this.props.routes[this.props.routes.length-1]
-        console.log("props", this.props);
-        // console.log("match", this.props.match);
+        console.log("header props", this.props);
+        console.log("header match", this.props.match);
         console.log("nav clicked", this.state.selectedKeys);
         console.log(event);
         this.setState({selectedKeys : [event.key]});
     }
 
     render() {
+        
         return (
             <div>
                     <Header className="header">
@@ -48,7 +55,7 @@ class AppHeader extends Component<IProps, IState>{
                         <Menu
                             theme="dark"
                             mode="horizontal"
-                            defaultSelectedKeys={['home']}
+                            defaultSelectedKeys={["home"]}
                             selectedKeys={this.state.selectedKeys}
                             style={{ lineHeight: '64px' }}
                             onClick={ (e: any) =>this.onNavClick(e)}
@@ -67,4 +74,4 @@ class AppHeader extends Component<IProps, IState>{
 
 }
 
-export default AppHeader;
+export default withRouter(AppHeader as any);

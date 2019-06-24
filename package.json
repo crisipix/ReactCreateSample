@@ -16,6 +16,8 @@
     "ag-grid-react": "^20.2.0",
     "antd": "^3.15.1",
     "customize-cra": "^0.2.12",
+    "mobx": "^5.10.1",
+    "mobx-react": "^6.1.1",
     "react": "^16.8.5",
     "react-app-rewired": "^2.1.1",
     "react-dom": "^16.8.5",

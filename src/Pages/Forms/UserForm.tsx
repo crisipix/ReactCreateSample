@@ -4,19 +4,28 @@ import './UserForm.css';
 import {
   NavLink, Route, RouteComponentProps
 } from "react-router-dom";
+
+import {observer,inject} from "mobx-react";
+import { CarStore } from '../../Data/Stores/CarStore';
 interface IProps{
+  carStore:CarStore
 
 }
 interface IState{
   Name: string
 }
 
+
+//https://www.nealbuerger.com/2018/11/11/getting-started-with-mobx-5-and-typescript-3-react-16-6/
+@inject('carStore')
+@observer
 class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
     constructor(props: any){
         super(props);
         this.state = {
             Name: "Chris W."
         };
+        
     }
 
 
@@ -28,6 +37,9 @@ class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
       }
     
       handleSubmit = (event: any) => {
+        console.log("store", this.props.carStore.Cars);
+        console.log("store", this.props.carStore.filter);
+        
         alert('A name was submitted: ' + this.state.Name); //error here
         // event.preventDefault();
       }

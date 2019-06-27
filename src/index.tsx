@@ -7,7 +7,12 @@ import {Provider} from 'mobx-react';
 import { stores } from './Data/Stores/stores';
 
 
-
+/*
+    Provider is a component that will pass mobx stores using React's 
+    context mechanism to child components. This eliminates the need of 
+    inject the store as a prop into each component that needs access to it,
+    this is especially useful when a deeply nested component needs access to the store.
+*/
 ReactDOM.render(
 <Provider {...stores}>
 <App/>

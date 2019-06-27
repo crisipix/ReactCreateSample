@@ -20,14 +20,15 @@ interface IState{
 @inject('carStore')
 @observer
 class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
+    
     constructor(props: any){
         super(props);
         this.state = {
             Name: "Chris W."
         };
         
+        
     }
-
 
       //  fat arrow functions to wrap the callback in 
       //  So that you can pass the event and access the state.
@@ -44,6 +45,14 @@ class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
         // event.preventDefault();
       }
 
+      handleAddCar = (event : any)=>{
+      const {carStore } = this.props;  
+      console.log("event value ", this.state.Name);
+      carStore.addCar(this.state.Name);
+      console.log("store cars", carStore.Cars);
+      console.log("store count", carStore.carCount);
+
+      }
       componentDidMount() {
         console.log("mounted");
           console.log("props",this.props);
@@ -69,6 +78,7 @@ class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
              */}
              {/* <Button type="primary" onClick={(e: any) => this.handleSubmit(e)}>Button</Button> */}
              <Button type="primary" onClick={this.handleSubmit}>Button</Button>
+             <Button type="primary" onClick={this.handleAddCar}>Add Car</Button>
         </div>
 
 

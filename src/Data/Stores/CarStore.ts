@@ -1,8 +1,22 @@
-import { autorun, observable } from "mobx";
+import { autorun, observable, action, computed } from "mobx";
 
+/*
+  Add to the stores object because it's passed into the provider as a prop. 
+  which will allow all nested children of the app have access to stores
+  ./stores.ts
+*/
 class CarStore {
   @observable Cars: any[] = ["Honda","Ford"];
   @observable filter: string = "dodge";
+
+  @computed
+  get carCount() : number{
+    return  this.Cars.length;
+  }
+  @action
+  addCar(car : string)  {
+    this.Cars.push(car);
+  }
 }
 
 ///const store =window.store=new CarStore;//

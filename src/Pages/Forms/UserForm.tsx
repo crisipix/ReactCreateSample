@@ -51,6 +51,13 @@ class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
       carStore.addCar(this.state.Name);
       console.log("store cars", carStore.Cars);
       console.log("store count", carStore.carCount);
+      }
+
+      handleRemoveCar = (event : any) => {
+        const {carStore} = this.props;
+        console.log(event.target, "removing");
+        console.log(event.target.textContent, "removing value ");
+        carStore.removeCar(event.target.textContent);
 
       }
       componentDidMount() {
@@ -64,6 +71,8 @@ class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
           
        
     render(){
+      const {carStore } = this.props;  
+
         return(
         <div className="userform">
             USER FORM
@@ -79,6 +88,7 @@ class UserForm extends Component<IProps & RouteComponentProps<{}>, IState>{
              {/* <Button type="primary" onClick={(e: any) => this.handleSubmit(e)}>Button</Button> */}
              <Button type="primary" onClick={this.handleSubmit}>Button</Button>
              <Button type="primary" onClick={this.handleAddCar}>Add Car</Button>
+             <ul>{carStore.Cars.map((c)=> <li onClick={this.handleRemoveCar}>{c}</li>)}</ul>
         </div>
 
 

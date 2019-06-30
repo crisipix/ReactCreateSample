@@ -17,6 +17,12 @@ class CarStore {
   addCar(car : string)  {
     this.Cars.push(car);
   }
+
+  @action
+  removeCar(car : string)
+  {
+    return this.Cars.filter(c => c !== car);
+  }
 }
 
 ///const store =window.store=new CarStore;//

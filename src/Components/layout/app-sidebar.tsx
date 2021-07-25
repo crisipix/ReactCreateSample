@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./AppSidebar.css";
+import "./app-sidebar.css";
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
 interface IProps { }
